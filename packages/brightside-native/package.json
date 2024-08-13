@@ -1,0 +1,27 @@
+{
+  "name": "brightside-native",
+  "version": "1.0.0",
+  "description": "A package that unlocks BrightSide Technologies for React Native",
+  "files": [
+    "dist/**/*"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brightsidedeveloper/brightside/packages/brightside-native"
+  },
+  "author": "BrightSideDevelopers",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.12",
+    "@types/node": "^22.2.0",
+    "typescript": "^4.0.0"
+  }
+}
