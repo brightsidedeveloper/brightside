@@ -17,7 +17,8 @@
   "author": "BrightSideDevelopers",
   "license": "MIT",
   "dependencies": {
-    "debug": "^4.3.6"
+    "debug": "^4.3.6",
+    "openai": "^4.55.5"
   },
   "devDependencies": {
     "@types/debug": "^4.1.12",

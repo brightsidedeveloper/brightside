@@ -5,11 +5,12 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES6",
     "module": "CommonJS",
+    "skipLibCheck": true,
     "jsx": "react",
     "declaration": true,
     "outDir": "./dist",
     "strict": true,
-    "types": ["node", "@types/node"],
+    "types": ["node", "@types/node", "react-native"],
     "baseUrl": ".",
     "paths": {
       "brightside/brightside-native": ["node_modules/brightside/brightside-native"]
