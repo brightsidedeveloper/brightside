@@ -1,12 +1,22 @@
-import { useEffect, useRef } from 'react'
-import useNative from 'src/context/useNative'
-import { ZodSchema } from 'zod'
+import { useEffect, useRef } from "react"
+import useBrightSide from "src/context/useBrightSide"
+import { ZodSchema } from "zod"
 
-export default function useNativeListener<T>(key: string, callback: (data: T) => void, schema: ZodSchema<T>) {
-  const { brightside } = useNative()
+export default function useNativeListener<T>(
+  key: string,
+  callback: (data: T) => void,
+  schema: ZodSchema<T>
+) {
+  const brightside = useBrightSide()
 
-  const cb = useRef(callback)
+  const cbRef = useRef(callback)
+  cbRef.current = callback
   const schemaRef = useRef(schema)
+  schemaRef.current = schema
 
-  useEffect(() => brightside.native.listenToNative(key, cb.current, schemaRef.current), [brightside, key])
+  useEffect(
+    () =>
+      brightside.native.listenToNative(key, cbRef.current, schemaRef.current),
+    [brightside, key]
+  )
 }
