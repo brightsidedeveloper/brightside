@@ -34,9 +34,14 @@ async function registerForPushNotificationsAsync() {
       })
     }
 
-    return await Notifications.getExpoPushTokenAsync({
-      projectId: Constants.expoConfig?.extra?.eas?.projectId,
-    })
+    const projectId = Constants.expoConfig?.extra?.eas?.projectId
+
+    if (!projectId) {
+      console.log('Project ID not found. Ensure it is set in your expo configuration.')
+      return null
+    }
+
+    return await Notifications.getExpoPushTokenAsync({ projectId })
   }
 
   const { status: existingStatus } = await Notifications.getPermissionsAsync()
