@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
-import useBrightSide from "src/context/useBrightSide"
 import { ZodSchema } from "zod"
+import useBrightSide from "./useBrightSide"
 
 export default function useNativeListener<T>(
   key: string,

@@ -35,7 +35,7 @@ export default class BrightSideTheme {
    * Set the theme to light, dark, or system in local storage and on the html element class list
    * @param choice light, dark, or null (which will use system)
    */
-  setTheme<T>(choice: 'dark' | 'light' | null) {
+  setTheme(choice: 'dark' | 'light' | null) {
     // Set Local Storage
     if (!choice) localStorage.removeItem('theme')
     else localStorage.setItem('theme', choice)

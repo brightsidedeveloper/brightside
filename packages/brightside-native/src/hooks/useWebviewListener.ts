@@ -1,12 +1,22 @@
-import { useCallback, useRef } from 'react'
-import useWebView from 'src/context/useWebView'
-import { ZodSchema } from 'zod'
+import { useEffect } from 'react';
+import { ZodSchema } from 'zod';
+import useBrightSideContext from '../context/useBrightSideContext';
 
-export default function useNativeListener<T>(key: string, callback: (data: T) => void, schema: ZodSchema<T>) {
-  const { brightside } = useWebView()
+export default function useWebViewListener<T>(key: string, callback: (data: T) => void, schema: ZodSchema<T>) {
+  const {addListener, removeListener} = useBrightSideContext()
 
-  const cb = useRef(callback)
-  const schemaRef = useRef(schema)
+  useEffect(() => {
+    addListener(key, (data: unknown) => {
+      try {
+        const parsedData = schema.parse(data)
+        callback(parsedData)
+      } catch (e) {
+        console.error(`Error parsing data for key: ${key}`, e)
+      }
+    })
 
-  return useCallback((data: string) => brightside.listenToWebView(key, data, cb.current, schemaRef.current), [brightside, key])
+    return () => {
+      removeListener(key)
+    }
+  }, [])
 }

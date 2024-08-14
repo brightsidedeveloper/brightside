@@ -1,8 +1,9 @@
-export { default as BrightSideNative } from './classes/BrightSideNative'
-
 // * Context
-export { default as WebViewProvider } from './context/WebViewProvider'
-export { default as useWebView } from './context/useWebView'
+export { default as BrightSideProvider } from './context/BrightSideProvider'
 
 // * Hooks
-export { default as useWebviewListener } from './hooks/useWebviewListener'
+export { default as useWebView } from './hooks/useWebView'
+export { default as useWebViewListener } from './hooks/useWebViewListener'
+
+// * Components
+export { default as BrightSideWebView } from './components/BrightSideWebView'

@@ -10,7 +10,7 @@ export default class BrightSidePush {
   async sendPushNotification(
     title: string,
     body: string,
-    data: Record<string, any>,
+    data: Record<string, unknown>,
     recipients: string[]
   ) {
     const { data: response, error } = await this.supabase.functions.invoke(
