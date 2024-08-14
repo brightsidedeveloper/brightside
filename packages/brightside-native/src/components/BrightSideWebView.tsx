@@ -1,5 +1,5 @@
 import React from 'react'
-import { WebView } from 'react-native-webview'
+import WebView from 'react-native-webview'
 import useBrightSideContext from '../context/brightside/useBrightSideContext'
 import useSendPushToken from '../hooks/useSendPushToken'
 
