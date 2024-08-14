@@ -1,6 +1,6 @@
 {
   "name": "brightside-native",
-  "version": "1.1.12",
+  "version": "1.1.14",
   "description": "A package that unlocks BrightSide Technologies for React Native",
   "files": [
     "dist/**/*"
@@ -24,7 +24,7 @@
     "expo-router": "^3.5.21",
     "react": "^18.2.0",
     "react-native": "^0.74.5",
-    "react-native-webview": "^13.10.5",
+    "react-native-webview": "^13.8.6",
     "zod": "^3.23.8"
   },
   "devDependencies": {
