@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import useBrightSideContext from 'src/context/private/useBrightSideContext'
+import useBrightSideContext from 'src/context/brightside/useBrightSideContext'
 
 export default function useWebView() {
   const { webviewRef, loaded, sendMessage } = useBrightSideContext()

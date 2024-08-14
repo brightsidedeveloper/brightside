@@ -1,7 +1,7 @@
 import React from 'react'
 import { WebView } from 'react-native-webview'
-import useBrightSideContext from 'src/context/private/useBrightSideContext'
-import useSendPushToken from 'src/hooks/private/useSendPushToken'
+import useBrightSideContext from 'src/context/brightside/useBrightSideContext'
+import useSendPushToken from 'src/hooks/useSendPushToken'
 
 interface BrightSideWebViewProps extends React.ComponentProps<typeof WebView> {
   url: string

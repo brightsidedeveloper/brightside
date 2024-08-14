@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react'
 import WebView, { WebViewMessageEvent } from 'react-native-webview'
-import BrightSideContext from './private/BrightSideContext'
+import BrightSideContext from './BrightSideContext'
 import * as Notifications from 'expo-notifications'
 import { SplashScreen } from 'expo-router'
 import { useColorScheme } from 'react-native'

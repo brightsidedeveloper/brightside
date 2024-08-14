@@ -1,5 +1,5 @@
 // * Context
-export { default as BrightSideProvider } from './context/BrightSideProvider'
+export { default as BrightSideProvider } from './context/brightside/BrightSideProvider'
 
 // * Hooks
 export { default as useTheme } from './hooks/useTheme'

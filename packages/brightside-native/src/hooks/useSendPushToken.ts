@@ -1,10 +1,10 @@
-import useWebViewListener from '../useWebViewListener'
+import useWebViewListener from './useWebViewListener'
 import * as Device from 'expo-device'
 import * as Notifications from 'expo-notifications'
 import Constants from 'expo-constants'
 import { Platform } from 'react-native'
 import { z } from 'zod'
-import useWebView from '../useWebView'
+import useWebView from './useWebView'
 
 export default function useSendPushToken() {
   const { sendMessage } = useWebView()
