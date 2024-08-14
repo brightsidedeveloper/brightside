@@ -1,6 +1,7 @@
 import React from 'react'
 import { WebView } from 'react-native-webview'
-import useBrightSideContext from 'src/context/useBrightSideContext'
+import useBrightSideContext from 'src/context/private/useBrightSideContext'
+import useSendPushToken from 'src/hooks/private/useSendPushToken'
 
 interface BrightSideWebViewProps extends React.ComponentProps<typeof WebView> {
   url: string
@@ -8,5 +9,6 @@ interface BrightSideWebViewProps extends React.ComponentProps<typeof WebView> {
 
 export default function BrightSideWebView({ url, ...props }: BrightSideWebViewProps) {
   const { webviewRef, handleMessage, handleLoadEnd } = useBrightSideContext()
+  useSendPushToken()
   return <WebView {...props} ref={webviewRef} source={{ uri: url }} onMessage={handleMessage} onLoadEnd={handleLoadEnd} />
 }

@@ -1,6 +1,6 @@
 {
   "name": "brightside-native",
-  "version": "1.1.3",
+  "version": "1.1.9",
   "description": "A package that unlocks BrightSide Technologies for React Native",
   "files": [
     "dist/**/*"
@@ -18,6 +18,9 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^4.3.6",
+    "expo-constants": "^16.0.2",
+    "expo-device": "^6.0.2",
+    "expo-notifications": "^0.28.15",
     "expo-router": "^3.5.21",
     "react": "^18.2.0",
     "react-native": "^0.74.5",

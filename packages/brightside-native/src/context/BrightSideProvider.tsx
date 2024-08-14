@@ -1,10 +1,19 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react'
 import WebView, { WebViewMessageEvent } from 'react-native-webview'
-import BrightSideContext from './BrightSideContext'
+import BrightSideContext from './private/BrightSideContext'
+import * as Notifications from 'expo-notifications'
 import { SplashScreen } from 'expo-router'
 import { useColorScheme } from 'react-native'
 
 SplashScreen.preventAutoHideAsync()
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: false,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+})
 
 interface BrightSideProviderProps extends UseBrightSideProps {
   children: React.ReactNode
@@ -44,6 +53,7 @@ function useBrightSide({ theme: fullTheme }: UseBrightSideProps) {
   }, [])
 
   const addListener = useCallback((key: string, callback: (data: unknown) => void) => {
+    if (onMessageListenersRef.current[key]) throw new Error(`Listener with key ${key} already exists`)
     onMessageListenersRef.current[key] = callback
   }, [])
 
@@ -51,9 +61,18 @@ function useBrightSide({ theme: fullTheme }: UseBrightSideProps) {
     delete onMessageListenersRef.current[key]
   }, [])
 
+  const sendMessage = useCallback((key: string, data: unknown) => {
+    if (!webviewRef.current) throw new Error('webviewRef from useNative must be attached to Webview')
+    webviewRef.current.injectJavaScript(`
+              window.postMessage(${JSON.stringify({ key, data })}, '*')
+            `)
+  }, [])
+
   const handleLoadEnd = useCallback(() => {
-    setTimeout(() => SplashScreen.hideAsync(), 1000)
-    setLoaded(true)
+    setTimeout(() => {
+      SplashScreen.hideAsync()
+      setLoaded(true)
+    }, 1000)
   }, [])
 
   return useMemo(
@@ -61,12 +80,13 @@ function useBrightSide({ theme: fullTheme }: UseBrightSideProps) {
       webviewRef,
       loaded,
       theme,
+      sendMessage,
       handleMessage,
       addListener,
       removeListener,
       handleLoadEnd,
     }),
-    [loaded, theme, handleMessage, addListener, removeListener, handleLoadEnd]
+    [loaded, theme, sendMessage, handleMessage, addListener, removeListener, handleLoadEnd]
   )
 }
 

@@ -1,18 +1,7 @@
-import { useCallback, useMemo } from 'react'
-import useBrightSideContext from '../context/useBrightSideContext'
+import { useMemo } from 'react'
+import useBrightSideContext from 'src/context/private/useBrightSideContext'
 
 export default function useWebView() {
-  const { webviewRef, loaded } = useBrightSideContext()
-
-  const sendMessage = useCallback(
-    (key: string, data: unknown) => {
-      if (!webviewRef.current) throw new Error('webviewRef from useNative must be attached to Webview')
-      webviewRef.current.injectJavaScript(`
-              window.postMessage(${JSON.stringify({ key, data })}, '*')
-            `)
-    },
-    [webviewRef]
-  )
-
+  const { webviewRef, loaded, sendMessage } = useBrightSideContext()
   return useMemo(() => ({ webviewRef, loaded, sendMessage }), [webviewRef, sendMessage])
 }

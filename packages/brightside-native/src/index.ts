@@ -2,6 +2,7 @@
 export { default as BrightSideProvider } from './context/BrightSideProvider'
 
 // * Hooks
+export { default as useTheme } from './hooks/useTheme'
 export { default as useWebView } from './hooks/useWebView'
 export { default as useWebViewListener } from './hooks/useWebViewListener'
 

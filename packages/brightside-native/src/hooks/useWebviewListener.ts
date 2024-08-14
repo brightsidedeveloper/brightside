@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import { ZodSchema } from 'zod';
-import useBrightSideContext from '../context/useBrightSideContext';
+import { useEffect } from 'react'
+import useBrightSideContext from 'src/context/private/useBrightSideContext'
+import { ZodSchema } from 'zod'
 
 export default function useWebViewListener<T>(key: string, callback: (data: T) => void, schema: ZodSchema<T>) {
-  const {addListener, removeListener} = useBrightSideContext()
+  const { addListener, removeListener } = useBrightSideContext()
 
   useEffect(() => {
     addListener(key, (data: unknown) => {
