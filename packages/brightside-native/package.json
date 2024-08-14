@@ -1,6 +1,6 @@
 {
   "name": "brightside-native",
-  "version": "1.1.9",
+  "version": "1.1.12",
   "description": "A package that unlocks BrightSide Technologies for React Native",
   "files": [
     "dist/**/*"

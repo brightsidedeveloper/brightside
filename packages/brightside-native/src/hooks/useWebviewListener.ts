@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useBrightSideContext from 'src/context/brightside/useBrightSideContext'
+import useBrightSideContext from '../context/brightside/useBrightSideContext'
 import { ZodSchema } from 'zod'
 
 export default function useWebViewListener<T>(key: string, callback: (data: T) => void, schema: ZodSchema<T>) {
